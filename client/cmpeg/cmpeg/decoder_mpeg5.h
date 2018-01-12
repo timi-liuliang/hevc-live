@@ -1,6 +1,7 @@
 #pragma once
 
 #include "decoder_base.h"
+#include "de265.h"
 
 namespace cmpeg
 {
@@ -13,5 +14,6 @@ namespace cmpeg
 		virtual bool decode();
 
 	private:
+		de265_decoder_context*			m_ctx;		// 解码器上下文
 	};
 }
