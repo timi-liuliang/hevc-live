@@ -1,5 +1,6 @@
 #include "player.h"
 #include "decoder_mpeg1.h"
+#include "decoder_mpeg5.h"
 
 namespace cmpeg
 {
@@ -14,7 +15,7 @@ namespace cmpeg
 
 	player::player(render_base* render, const char* url)
 	{
-		m_video_decoder = new decoder_mpeg1();
+		m_video_decoder = new decoder_mpeg5();
 		m_video_decoder->connect(render);
 		m_demuxer.connect( demuxer_ts::VIDEO_1, m_video_decoder);
 
