@@ -38,9 +38,9 @@ extern "C" {
 
 #if defined(_MSC_VER) && !defined(LIBDE265_STATIC_BUILD)
   #ifdef LIBDE265_EXPORTS
-  #define LIBDE265_API __declspec(dllexport)
+  #define LIBDE265_API //__declspec(dllexport)
   #else
-  #define LIBDE265_API __declspec(dllimport)
+  #define LIBDE265_API //__declspec(dllimport)
   #endif
 #elif HAVE_VISIBILITY
   #ifdef LIBDE265_EXPORTS
