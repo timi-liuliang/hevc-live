@@ -1,5 +1,6 @@
 #include "decoder_mpeg5.h"
 #include <assert.h>
+#include <image.h>
 
 namespace cmpeg 
 {
@@ -36,8 +37,19 @@ namespace cmpeg
 
 			// show available images
 			const de265_image* img = de265_get_next_picture(m_ctx);
-			if (img) {
-				int a = 10;
+			if (img) 
+			{
+				if (m_destination)
+				{
+					m_destination->resize(img->get_width(), img->get_height());
+
+					const uint8_t* y = img->get_image_plane(0);
+					const uint8_t* u = img->get_image_plane(2);
+					const uint8_t* v = img->get_image_plane(1);
+
+
+					m_destination->render( y, u, v);
+				}
 			}
 		}
 

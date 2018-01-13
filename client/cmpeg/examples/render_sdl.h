@@ -12,7 +12,7 @@ namespace example
 	public:
 		render_sdl();
 		virtual void resize(int width, int height);
-		virtual void render(uint8_t* Y, uint8_t* Cr, uint8_t* Cb);
+		virtual void render(const uint8_t* Y, const uint8_t* Cr, const uint8_t* Cb);
 
 	private:
 		SDL_Surface* m_screen;

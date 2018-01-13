@@ -18,7 +18,7 @@ int main()
 
 	example::render_sdl render;
 
-	cmpeg::player mpeg_player( &render, "ws://124.243.220.24:10002/camera_0");
+	cmpeg::player mpeg_player( &render, "ws://118.190.156.61:10002/camera_0");
 	mpeg_player.play();
 
 #ifdef _WIN32
