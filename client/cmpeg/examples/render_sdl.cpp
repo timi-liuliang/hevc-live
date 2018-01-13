@@ -1,6 +1,7 @@
 #include "render_sdl.h"
 #include <SDL.h>
 #include <vector>
+#include <Windows.h>
 
 #undef main
 
@@ -35,6 +36,10 @@ namespace example
 
 	void render_sdl::render(const uint8_t* Y, const uint8_t* Cr, const uint8_t* Cb)
 	{
+		static int frameCount = 0;
+		static int totalTime = 0;
+		static int time0 = GetTickCount();
+
 		SDL_LockYUVOverlay(m_bmp);
 
 		m_bmp->pixels[0] = (uint8_t*)Y;
@@ -53,5 +58,19 @@ namespace example
 		rect.h = m_height;
 
 		SDL_DisplayYUVOverlay(m_bmp, &rect);
+
+		frameCount++;
+		int time1 = GetTickCount();
+		int elapsedTime = time1 - time0;
+		totalTime += elapsedTime;
+		if (totalTime > 1000)
+		{
+			printf("fps %f\n", frameCount / (totalTime * 0.001));
+			frameCount = 0;
+			totalTime = 0;
+		}
+
+
+		time0 = time1;
 	}
 }
