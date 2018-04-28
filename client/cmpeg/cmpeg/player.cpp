@@ -1,6 +1,7 @@
 #include "player.h"
 #include "decoder_mpeg1.h"
 #include "decoder_mpeg5.h"
+#include <Windows.h>
 
 namespace cmpeg
 {
@@ -42,6 +43,8 @@ namespace cmpeg
 		while (m_socket->getReadyState() != easywsclient::WebSocket::CLOSED) {
 			m_socket->poll();
 			m_socket->dispatchBinary(handle_ws_message);
+
+			Sleep(10);
 		}
 	}
 

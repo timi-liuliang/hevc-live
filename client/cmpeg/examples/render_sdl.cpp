@@ -45,9 +45,9 @@ namespace example
 		m_bmp->pixels[0] = (uint8_t*)Y;
 		m_bmp->pixels[1] = (uint8_t*)Cr;
 		m_bmp->pixels[2] = (uint8_t*)Cb;
-		m_bmp->pitches[0] = 640;
-		m_bmp->pitches[1] = 320;
-		m_bmp->pitches[2] = 320;
+		m_bmp->pitches[0] = m_width;
+		m_bmp->pitches[1] = m_width / 2;
+		m_bmp->pitches[2] = m_width / 2;
 
 		SDL_UnlockYUVOverlay(m_bmp);
 
